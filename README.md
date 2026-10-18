@@ -16,3 +16,10 @@ npx skills@latest add Klerith/fernando-skills
 ```
 
 
+## Commands
+
+```bash
+npm run dev      # dev server (Turbopack)
+npm run build    # production build
+npm run lint     # ESLint
+```

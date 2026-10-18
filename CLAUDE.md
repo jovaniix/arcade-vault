@@ -2,21 +2,21 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
-## Commands
 
-```bash
-npm run dev      # dev server (Turbopack)
-npm run build    # production build
-npm run lint     # ESLint
-```
 
 No test suite configured.
+
+## Skills
+Usa siempre /frontend-design para disenar la interfaz de usuario.
 
 ## Stack
 
 - **Next.js 16** (App Router) + **React 19** + **TypeScript 5**
 - **Tailwind CSS v4** via `@tailwindcss/turbopack` (imported in `globals.css` with `@import "tailwindcss"`)
 - Fonts: `Press Start 2P` (pixel/heading) and `JetBrains Mono` (body) — exposed as CSS vars `--font-press-start` / `--font-jetbrains-mono`, aliased to `--pixel` and `--mono`
+
+
+
 
 ## Architecture
 

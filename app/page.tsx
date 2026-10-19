@@ -51,11 +51,13 @@ export default function Home() {
     <>
       <div className="av-bg" />
       <div className="av-noise" />
-      <Nav route={route} navigate={navigate} user={user} onSignOut={handleSignOut} />
-      <main className="av-main">{screen}</main>
-      <footer style={{ borderTop: "1px solid var(--line)", padding: "20px 32px", textAlign: "center", color: "var(--ink-faint)", fontFamily: "var(--mono)", fontSize: 11, letterSpacing: "0.16em" }}>
-        © 2026 ARCADE VAULT · HECHO CON PIXELES Y NEÓN · v2.6.0
-      </footer>
+      <div style={{ position: "relative", zIndex: 2, display: "flex", flexDirection: "column", minHeight: "100%" }}>
+        <Nav route={route} navigate={navigate} user={user} onSignOut={handleSignOut} />
+        <main className="av-main">{screen}</main>
+        <footer style={{ borderTop: "1px solid var(--line)", padding: "20px 32px", textAlign: "center", color: "var(--ink-faint)", fontFamily: "var(--mono)", fontSize: 11, letterSpacing: "0.16em" }}>
+          © 2026 ARCADE VAULT · HECHO CON PIXELES Y NEÓN · v2.6.0
+        </footer>
+      </div>
     </>
   );
 }

@@ -1,6 +1,6 @@
 # Spec 02 — Pantallas Home y About
 
-**Estado:** aprobado  
+**Estado:** implementado  
 **Depende de:** Spec 01  
 **Fecha:** 2026-10-24  
 **Objetivo:** Implementar las pantallas Home y About (más sus rutas en el Nav) a partir de los templates `references/templates/home-about/`, integrándolas en la máquina de estados existente de `app/page.tsx`, y renombrar la ruta `biblioteca` a `games`.

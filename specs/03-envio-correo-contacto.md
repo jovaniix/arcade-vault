@@ -59,7 +59,7 @@ RESEND_API_KEY=re_xxxxxxxxxxxxxxxxxxxx
 
 2. **`.env.local`** — añadir la variable (paso manual; el desarrollador pega su clave de Resend):
    ```
-   RESEND_API_KEY=re_XbAXNHDT_Apkmm5oWdwYHFiV5Nie1ULfa
+   RESEND_API_KEY=re_XXXXXXXXXXXXXXXXXXXXXXX
    ```
 
 3. **`app/api/contact/route.ts`** — crear el directorio `app/api/contact/` y el archivo:

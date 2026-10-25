@@ -54,9 +54,3 @@ All static game data and types live in `components/data.ts`:
 - `experimental.agentFeedback` is enabled in `next.config.ts`; `next dev` may run a reporting pass.
 - No routing library — navigation is purely prop-drilled `navigate(route)` callbacks.
 - Auth is fake (localStorage only); there is no backend or API.
-
-## Screenshots
-
-ALL Playwright screenshots MUST be saved to `.playwright-screenshots/` — always pass `filename: ".playwright-screenshots/<name>.png"` to `browser_take_screenshot`. Never save screenshots to the project root or any other directory.
-
-ALL Playwright console logs and page snapshots (console-*.log, page-*.yml) MUST be saved to `.playwirght-mcp/`. Never save them to the project root or `.playwright-screenshots/` directly.

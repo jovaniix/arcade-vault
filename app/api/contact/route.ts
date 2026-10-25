@@ -16,7 +16,7 @@ export async function POST(request: Request) {
 
   const { error } = await resend.emails.send({
     from: "onboarding@resend.dev",
-    to: "maxicomputer72@gmail.com",
+    to: "jovanyagd@gmail.com",
     subject: `[Arcade Vault] Mensaje de ${name}`,
     text: `Nombre: ${name}\nEmail: ${email}\n\nMensaje:\n${msg}`,
   });

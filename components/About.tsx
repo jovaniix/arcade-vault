@@ -56,15 +56,35 @@ export default function About({ navigate }: { navigate: (r: Route) => void }) {
   const [form, setForm] = useState({ name: "", email: "", msg: "" });
   const [sent, setSent] = useState<string | null>(null);
   const [shake, setShake] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
-  const onSubmit = (e: React.FormEvent) => {
+  const onSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!form.name.trim() || !form.email.trim() || !form.msg.trim()) {
       setShake(true);
       setTimeout(() => setShake(false), 400);
       return;
     }
-    setSent(form.name.trim());
+    setError(null);
+    setLoading(true);
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(form),
+      });
+      const data = await res.json();
+      if (data.ok) {
+        setSent(form.name.trim());
+      } else {
+        setError(data.message ?? "Error desconocido");
+      }
+    } catch {
+      setError("No se pudo conectar con el servidor");
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -136,7 +156,10 @@ export default function About({ navigate }: { navigate: (r: Route) => void }) {
                   <label>MENSAJE</label>
                   <textarea rows={5} value={form.msg} onChange={(e) => setForm({ ...form, msg: e.target.value })} placeholder="Cuéntanos qué tienes en mente…"></textarea>
                 </div>
-                <button className="btn xl press" type="submit" style={{ width: "100%" }}>▶  ENVIAR MENSAJE</button>
+                <button className="btn xl press" type="submit" style={{ width: "100%" }} disabled={loading}>
+                  {loading ? "▶ ENVIANDO…" : "▶  ENVIAR MENSAJE"}
+                </button>
+                {error && <p className="form-error">{error}</p>}
               </>
             ) : (
               <div className="terminal-success">
@@ -151,7 +174,7 @@ export default function About({ navigate }: { navigate: (r: Route) => void }) {
                   <div className="line dim">[OK] Transmitiendo paquete…</div>
                   <div className="line success">&gt; MENSAJE RECIBIDO. TE RESPONDEREMOS PRONTO. GRACIAS, {sent.toUpperCase()}.<span className="caret">_</span></div>
                   <div style={{ marginTop: 18 }}>
-                    <button className="btn ghost" type="button" onClick={() => { setSent(null); setForm({ name: "", email: "", msg: "" }); }}>ENVIAR OTRO MENSAJE</button>
+                    <button className="btn ghost" type="button" onClick={() => { setSent(null); setForm({ name: "", email: "", msg: "" }); setError(null); }}>ENVIAR OTRO MENSAJE</button>
                   </div>
                 </div>
               </div>

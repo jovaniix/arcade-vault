@@ -10,19 +10,16 @@ import Auth from "../components/Auth";
 import HallOfFame from "../components/HallOfFame";
 
 export default function Home() {
-  const [route, setRoute] = useState<Route>(() => {
-    if (typeof window === "undefined") return { name: "biblioteca" };
+  const [route, setRoute] = useState<Route>({ name: "biblioteca" });
+  const [user, setUser] = useState<User | null>(null);
+
+  useEffect(() => {
     try {
       const h = location.hash.replace(/^#/, "");
-      if (h) return JSON.parse(decodeURIComponent(h)) as Route;
+      if (h) setRoute(JSON.parse(decodeURIComponent(h)) as Route);
     } catch (e) {}
-    return { name: "biblioteca" };
-  });
-
-  const [user, setUser] = useState<User | null>(() => {
-    if (typeof window === "undefined") return null;
-    try { return JSON.parse(localStorage.getItem("av_user") || "null"); } catch (e) { return null; }
-  });
+    try { setUser(JSON.parse(localStorage.getItem("av_user") || "null")); } catch (e) {}
+  }, []);
 
   useEffect(() => {
     location.hash = encodeURIComponent(JSON.stringify(route));

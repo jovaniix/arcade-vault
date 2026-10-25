@@ -1,0 +1,7 @@
+[mcp_servers.playwright]
+command = "npx"
+args = [
+    "@playwright/mcp@latest",
+    "--output-dir",
+    "/Users/jovanix/Desktop/Claude code/05-arcade-vault/.playwright-screenshots",
+]

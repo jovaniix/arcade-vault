@@ -1,6 +1,6 @@
 # Spec 01 — MVP Pantallas Visuales
 
-**Estado:** aprobado 
+**Estado:** Implementado 
 **Depende de:** —  
 **Fecha:** 2026-10-19  
 **Objetivo:** Portar las 5 pantallas de los templates de referencia (Biblioteca, Detalle, Reproductor, Auth, Salón) al stack Next.js/TypeScript, con navegación funcional y todo el sistema visual, sin implementar ningún juego real.

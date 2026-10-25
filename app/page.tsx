@@ -1,22 +1,31 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { Route, User } from "../components/data";
+import { Route, User, GAMES } from "../components/data";
 import Nav from "../components/Nav";
+import Home from "../components/Home";
+import About from "../components/About";
 import Library from "../components/Library";
 import GameDetail from "../components/GameDetail";
 import GamePlayer from "../components/GamePlayer";
 import Auth from "../components/Auth";
 import HallOfFame from "../components/HallOfFame";
 
-export default function Home() {
-  const [route, setRoute] = useState<Route>({ name: "biblioteca" });
+export default function Page() {
+  const [route, setRoute] = useState<Route>({ name: "home" });
   const [user, setUser] = useState<User | null>(null);
 
   useEffect(() => {
     try {
       const h = location.hash.replace(/^#/, "");
-      if (h) setRoute(JSON.parse(decodeURIComponent(h)) as Route);
+      if (h) {
+        const parsed = JSON.parse(decodeURIComponent(h)) as Route;
+        if ((parsed as { name: string }).name === "biblioteca") {
+          setRoute({ name: "games" });
+        } else {
+          setRoute(parsed);
+        }
+      }
     } catch (e) {}
     try { setUser(JSON.parse(localStorage.getItem("av_user") || "null")); } catch (e) {}
   }, []);
@@ -38,7 +47,9 @@ export default function Home() {
   };
 
   let screen = null;
-  if (route.name === "biblioteca") screen = <Library navigate={navigate} />;
+  if (route.name === "home") screen = <Home navigate={navigate} games={GAMES} />;
+  else if (route.name === "games") screen = <Library navigate={navigate} />;
+  else if (route.name === "about") screen = <About navigate={navigate} />;
   else if (route.name === "detalle") screen = <GameDetail id={route.id} navigate={navigate} />;
   else if (route.name === "player") screen = <GamePlayer id={route.id} user={user} navigate={navigate} onSaveScore={handleSaveScore} />;
   else if (route.name === "auth") screen = <Auth navigate={navigate} onLogin={handleLogin} />;

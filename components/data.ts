@@ -1,11 +1,13 @@
 // ===== data.ts — shared mock data & types =====
 
 export type Route =
-  | { name: "biblioteca" }
+  | { name: "home" }
+  | { name: "games" }
   | { name: "detalle"; id: string }
   | { name: "player"; id: string }
   | { name: "auth" }
-  | { name: "salon" };
+  | { name: "salon" }
+  | { name: "about" };
 
 export interface User {
   name: string;

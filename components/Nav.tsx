@@ -15,21 +15,23 @@ export default function Nav({ route, navigate, user, onSignOut }: NavProps) {
 
   const isActive = (name: string) =>
     route.name === name ||
-    (name === "biblioteca" && route.name === "detalle") ||
-    (name === "biblioteca" && route.name === "player");
+    (name === "games" && route.name === "detalle") ||
+    (name === "games" && route.name === "player");
 
   const go = (r: Route) => { setOpen(false); navigate(r); };
 
   return (
     <>
       <nav className="av-nav">
-        <div className="logo" onClick={() => go({ name: "biblioteca" })}>
+        <div className="logo" onClick={() => go({ name: "home" })}>
           <div className="logo-mark"></div>
           <div className="logo-text neon-cyan">ARCADE <span className="neon-magenta">VAULT</span></div>
         </div>
         <div className="links">
-          <a className={isActive("biblioteca") ? "active" : ""} onClick={() => go({ name: "biblioteca" })}>Biblioteca</a>
+          <a className={isActive("home") ? "active" : ""} onClick={() => go({ name: "home" })}>Inicio</a>
+          <a className={isActive("games") ? "active" : ""} onClick={() => go({ name: "games" })}>Biblioteca</a>
           <a className={isActive("salon") ? "active" : ""} onClick={() => go({ name: "salon" })}>Salón de la Fama</a>
+          <a className={isActive("about") ? "active" : ""} onClick={() => go({ name: "about" })}>Acerca de</a>
         </div>
         <div className="spacer"></div>
         <div className="coin-counter">
@@ -47,8 +49,10 @@ export default function Nav({ route, navigate, user, onSignOut }: NavProps) {
       <div className={"av-mobile-backdrop" + (open ? " open" : "")} onClick={() => setOpen(false)}></div>
       <aside className={"av-mobile-panel" + (open ? " open" : "")}>
         <div className="pixel neon-cyan" style={{ fontSize: 11, marginBottom: 16 }}>MENÚ</div>
-        <a className={isActive("biblioteca") ? "active" : ""} onClick={() => go({ name: "biblioteca" })}>Biblioteca</a>
+        <a className={isActive("home") ? "active" : ""} onClick={() => go({ name: "home" })}>Inicio</a>
+        <a className={isActive("games") ? "active" : ""} onClick={() => go({ name: "games" })}>Biblioteca</a>
         <a className={isActive("salon") ? "active" : ""} onClick={() => go({ name: "salon" })}>Salón de la Fama</a>
+        <a className={isActive("about") ? "active" : ""} onClick={() => go({ name: "about" })}>Acerca de</a>
         <a className={isActive("auth") ? "active" : ""} onClick={() => go({ name: "auth" })}>{user ? "Cuenta" : "Iniciar Sesión"}</a>
         <div style={{ flex: 1 }}></div>
         <div className="pixel" style={{ fontSize: 9, color: "var(--ink-faint)", letterSpacing: "0.16em" }}>CRÉDITOS · 03</div>

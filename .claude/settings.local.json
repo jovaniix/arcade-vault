@@ -23,5 +23,9 @@
       "Bash(npx prettier *)"
     ],
     "deny": []
-  }
+  },
+  "disabledMcpjsonServers": [],
+  "enabledMcpjsonServers": [
+    "supabase"
+  ]
 }

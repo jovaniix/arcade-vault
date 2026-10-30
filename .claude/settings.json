@@ -1,0 +1,15 @@
+{
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": "Write|Edit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "/Users/jovanix/Desktop/Claude code/05-arcade-vault/.claude/hooks/format-and-lint.sh"
+          }
+        ]
+      }
+    ]
+  }
+}

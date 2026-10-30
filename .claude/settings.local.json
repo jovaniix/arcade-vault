@@ -1,0 +1,31 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npx skill:latest *)",
+      "Bash(npx tsc *)",
+      "Bash(npx next *)",
+      "Bash(node *)",
+      "mcp__playwright__browser_navigate",
+      "mcp__playwright__browser_take_screenshot",
+      "mcp__playwright__browser_console_messages",
+      "mcp__playwright__browser_evaluate",
+      "mcp__playwright__browser_resize",
+      "Skill(update-config)",
+      "Bash(git push *)",
+      "Bash(git mv *)",
+      "Bash(git checkout *)",
+      "Bash(python3 -m http.server 8000)",
+      "Bash(echo \"PID: $!\")",
+      "mcp__playwright__browser_click",
+      "mcp__playwright__browser_type",
+      "Read(/Users/jovanix/.claude/**)",
+      "Bash(chmod +x *)",
+      "Bash(npx prettier *)"
+    ],
+    "deny": []
+  },
+  "disabledMcpjsonServers": [],
+  "enabledMcpjsonServers": [
+    "supabase"
+  ]
+}
